@@ -8,7 +8,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 
-const { t } = useI18n(); // This gives you access to the translation function
+const { t } = useI18n();
 
 const form = useForm({
     name: '',

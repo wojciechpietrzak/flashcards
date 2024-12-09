@@ -1,8 +1,16 @@
 {
     "Already registered?": "Masz już konto?",
+    "Back to login": "Powrót do logowania",
     "Confirm Password": "Potwierdź hasło",
     "Email": "Email",
+    "Email Password Reset Link": "Wyślij link",
+    "Forgot Password": "Zapomniane hasło",
+    "Forgot your password?": "Zapomniane hasło?",
+    "Language": "Język",
+    "Log In": "Zaloguj się",
     "Name": "Imię",
     "Password": "Hasło",
-    "Register": "Zarejestruj się"
+    "Register": "Zarejestruj się",
+    "Remember me": "Zapamiętaj mnie",
+    "forgot_password_prompt": "Zapomniane hasło? Żaden problem. Podaj swój adres e-mail, a wyślemy Ci link, który umożliwi Ci ustawienie nowego hasła."
 }

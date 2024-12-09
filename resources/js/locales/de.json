@@ -1,8 +1,16 @@
 {
     "Already registered?": "Bereits registriert?",
+    "Back to login": "Zurück zu einloggen",
     "Confirm Password": "Passwort bestätigen",
     "Email": "Email",
+    "Email Password Reset Link": "Passwort Zurücksetzen Link schicken",
+    "Forgot Password": "Vergessenes Passwort",
+    "Forgot your password?": "Passwort vergessen?",
+    "Language": "Sprache",
+    "Log In": "Einloggen",
     "Name": "Name",
     "Password": "Passwort",
-    "Register": "Anmelden"
+    "Register": "Anmelden",
+    "Remember me": "Merken mich",
+    "forgot_password_prompt": "Vergessenes Passwort? Kein Problem. Teilen Sie uns einfach Ihre E-Mail-Adresse mit und wir schicken Ihnen per E-Mail einen Link zum Zurücksetzen Ihres Passworts, mit dem Sie ein neues Passwort auswählen können."
 }

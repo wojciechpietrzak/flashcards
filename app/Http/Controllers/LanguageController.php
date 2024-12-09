@@ -14,7 +14,7 @@ class LanguageController extends Controller
      */
     public function getLanguages()
     {
-        $languages = Language::all(['id', 'name', 'code']); // Fetch language id, name, and code
+        $languages = Language::orderBy('name')->get(['id', 'name', 'code']); // Fetch language id, name, and code
         return response()->json($languages); // Return as JSON
     }
 }

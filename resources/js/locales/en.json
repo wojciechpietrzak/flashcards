@@ -1,8 +1,16 @@
 {
     "Already registered?": "Already registered?",
+    "Back to login": "Back to Login",
     "Confirm Password": "Confirm Password",
     "Email": "Email",
+    "Email Password Reset Link": "Email Password Reset Link",
+    "Forgot Password": "Forgot Password",
+    "Forgot your password?": "Forgot your password?",
+    "Language": "Language",
+    "Log In": "Log In",
     "Name": "Name",
     "Password": "Password",
-    "Register": "Register"
+    "Register": "Register",
+    "Remember me": "Remember me",
+    "forgot_password_prompt": "Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one."
 }
