@@ -3,6 +3,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import { Link } from '@inertiajs/vue3';
 import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { Inertia } from '@inertiajs/inertia';
 
 const { locale } = useI18n();
 
@@ -20,21 +21,46 @@ const fetchLanguages = async () => {
 };
 
 // Handle language selection
-const selectedLanguage = ref(localStorage.getItem('selectedLanguage') || locale.value);
+const selectedLanguage = ref('');
 
-const changeLanguage = (lang) => {
+// Function to change language and send it to the backend
+const changeLanguage = async (lang) => {
     selectedLanguage.value = lang;
-    locale.value = lang;
+
+    // Store the selected language in localStorage for the client-side
     localStorage.setItem('selectedLanguage', lang);
+
+    try {
+        // Use fetch to send the selected language to the backend
+        const response = await fetch('/set-language', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+            },
+            body: JSON.stringify({ language: lang }),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            locale.value = lang; // Update the locale in Vue i18n
+        } else {
+            console.error('Failed to set language:', data);
+        }
+    } catch (error) {
+        console.error('Error changing language:', error);
+    }
 };
 
-// Sync the language from `localStorage` on mount
+// Sync the language from the session on mount
 onMounted(() => {
     fetchLanguages();
 
-    if (localStorage.getItem('selectedLanguage')) {
-        locale.value = localStorage.getItem('selectedLanguage');
-    }
+    // Fetch the current language preference from the server session
+    const currentLanguage = window.appLanguage || 'en';  // Assuming `window.appLanguage` is set by backend
+    locale.value = currentLanguage;
+    selectedLanguage.value = currentLanguage;
 });
 </script>
 

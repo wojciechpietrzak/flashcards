@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\ProfileController;
@@ -29,5 +30,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
+Route::post('/set-language', function (Request $request) {
+    $language = $request->input('language', 'en');
+    session(['selectedLanguage' => $language]);
+    app()->setLocale($language);
+    return response()->json(['success' => true], 200);
+});
 
 require __DIR__.'/auth.php';
