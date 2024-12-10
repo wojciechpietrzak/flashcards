@@ -14,9 +14,9 @@ return [
     */
 
     'reset' => 'Twoje hasło zostało zresetowane.',
-    'sent' => 'We have emailed your password reset link.',
-    'throttled' => 'Please wait before retrying.',
-    'token' => 'This password reset token is invalid.',
+    'sent' => 'Wysłaliśmy Ci link do zresetowania hasła.',
+    'throttled' => 'Proszę poczekać przed ponowieniem próby.',
+    'token' => 'Nieprawidłowy klucz resetu hasła.',
     'user' => "Nie znaleziono użytkownika o podanym adresie e-mail.",
 
 ];
