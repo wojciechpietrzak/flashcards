@@ -57,10 +57,10 @@ const changeLanguage = async (lang) => {
 onMounted(() => {
     fetchLanguages();
 
-    // Fetch the current language preference from the server session
-    const currentLanguage = window.appLanguage || 'en';  // Assuming `window.appLanguage` is set by backend
-    locale.value = currentLanguage;
+    const currentLanguage = localStorage.getItem('selectedLanguage') || 'en';
     selectedLanguage.value = currentLanguage;
+    locale.value = currentLanguage; // Sync Vue i18n
+
 });
 </script>
 
