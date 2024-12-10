@@ -27,9 +27,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
 });
-
-Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 
 Route::post('/set-language', function (Request $request) {
     $language = $request->input('language', 'en');

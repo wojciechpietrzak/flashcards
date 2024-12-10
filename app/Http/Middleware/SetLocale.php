@@ -18,8 +18,12 @@ class SetLocale
     public function handle(Request $request, Closure $next): Response
     {
         $locale = session('selectedLanguage', config('app.locale')); // Default to app locale
-        if (Auth::check() && Auth::user()->language) {
-            $locale = Auth::user()->language->code; // User's preferred language
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $locale = cache()->remember("user-{$user->id}-locale", 60 * 60, function () use ($user) {
+                return $user->language ? $user->language->code : config('app.locale');
+            });
         }
 
         App::setLocale($locale);

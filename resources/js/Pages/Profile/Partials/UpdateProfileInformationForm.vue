@@ -1,9 +1,13 @@
 <script setup>
+import { useI18n } from 'vue-i18n';
+import { onMounted, ref } from 'vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Link, useForm, usePage } from '@inertiajs/vue3';
+
+const { t } = useI18n();
 
 defineProps({
     mustVerifyEmail: {
@@ -19,7 +23,15 @@ const user = usePage().props.auth.user;
 const form = useForm({
     name: user.name,
     email: user.email,
+    language_id: user.language_id,
 });
+
+const languages = ref([]);
+onMounted(async () => {
+    const response = await fetch('/api/languages');
+    languages.value = await response.json();
+});
+
 </script>
 
 <template>
@@ -83,6 +95,23 @@ const form = useForm({
                 >
                     A new verification link has been sent to your email address.
                 </div>
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="language_id" :value="t('Language')" />
+
+                <select
+                    v-model="form.language_id"
+                    id="language_id"
+                    class="mt-1 block w-full"
+                    required
+                >
+                    <option v-for="language in languages" :key="language.id" :value="language.id">
+                        {{ language.name }}
+                    </option>
+                </select>
+
+                <InputError class="mt-2" :message="form.errors.language_id" />
             </div>
 
             <div class="flex items-center gap-4">

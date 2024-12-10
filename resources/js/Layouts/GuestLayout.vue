@@ -3,7 +3,6 @@ import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import { Link } from '@inertiajs/vue3';
 import { ref, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { Inertia } from '@inertiajs/inertia';
 
 const { locale } = useI18n();
 
